@@ -1,0 +1,57 @@
+import java.util.*;
+import java.io.*;
+class Ascii{
+    public static void main(String args[])throws Exception{
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+
+        FileWriter fw=new FileWriter("Ascii.txt");
+        for(int i=0;i<str.length();i++){
+            char ch=str.charAt(i);
+            int ascci=ch;
+
+            fw.write(ascci+"\n");
+            System.out.println("Ascii value added in File :"+ascci);
+        }
+        fw.close();
+
+    }
+}
+
+-----------------
+Q2
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        
+        Hashtable<String,Integer> emp=new Hashtable<>();
+        System.out.println("how many emp want");
+        int n=sc.nextInt();
+        
+        for(int i=0;i<n;i++){
+            System.out.println("enter name ");
+            String name=sc.next();
+            
+            System.out.print("Enter id ");
+            int id=sc.nextInt();
+            
+            emp.put(name,id);
+        }
+        
+        System.out.println("Display Hashtable");
+        for(String key: emp.keySet()){
+            System.out.println(key+" = "+emp.get(key));
+        }
+        
+        System.out.println("Enter name for search ");
+        String search=sc.next();
+        
+        if(emp.containsKey(search)){
+            System.out.println("Id of employee is "+emp.get(search));
+            }else{
+                System.out.println("not found employee");
+            }
+        }
+        
+       }

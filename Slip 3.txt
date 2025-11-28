@@ -1,0 +1,117 @@
+Q1
+import java.util.*;
+import java.math.*;
+
+abstract class Shape{
+    abstract double area();
+    abstract double volume();
+}
+
+class Sphere extends Shape{
+    double r;
+    
+    Sphere(double r){
+        this.r=r;
+    }
+    double area(){
+        return 4*3.14*r*r;
+    }
+    double volume(){
+        return(4.0/3)*3.14*r*r*r;
+    }
+}
+
+class Cone extends Shape{
+    double r,h;
+    
+    Cone(double r,double h){
+        this.r=r;
+        this.h=h;
+    }
+    double area(){
+        double slant=Math.sqrt(r*r+h*h);
+        return 3.14*r*(r+slant);
+    }
+    
+    double volume(){
+        return (1.0/3) * 3.14 * r * r * h;
+    }
+    
+}
+class Main{
+    public static void main(String args[]){
+        Sphere s=new Sphere(5);
+        System.out.println("area of sphere"+s.area());
+        System.out.println("volume of sphere"+s.volume());
+    
+        Cone c=new Cone(5,7);
+        System.out.println("area of cone"+c.area());
+        System.out.println("volume of sphere"+c.volume());
+    }
+}
+----------------------
+Q2
+Q2.
+import java.io.*;
+import java.util.*;
+
+public class Dos {
+    public static void main(String args[]) {
+        int cid;
+        String cname, caddr;
+        long mno;
+
+        try {
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("How many data you want to enter");
+            int n = sc.nextInt();
+
+            // --- Writing into file ---
+            for (int i = 0; i < n; i++) {
+                System.out.println("Enter cid, name, address and mobile no");
+                cid = sc.nextInt();
+                cname = sc.next();
+                caddr = sc.next();
+                mno = sc.nextLong();
+
+                DataOutputStream dos = new DataOutputStream(new FileOutputStream("xyz.txt", true));
+                dos.writeInt(cid);
+                dos.writeUTF(cname);
+                dos.writeUTF(caddr);
+                dos.writeLong(mno);
+                dos.close();   // close after writing
+            }
+
+            System.out.println("\nData stored successfully!\n");
+
+            // --- Reading from file ---
+            DataInputStream dis = new DataInputStream(new FileInputStream("xyz.txt"));
+
+            System.out.println("Reading data from file:");
+            System.out.println("---------------------------");
+
+            try {
+                while (true) {
+                    int id = dis.readInt();
+                    String name = dis.readUTF();
+                    String addr = dis.readUTF();
+                    long mob = dis.readLong();
+
+                    System.out.println("CID: " + id);
+                    System.out.println("Name: " + name);
+                    System.out.println("Address: " + addr);
+                    System.out.println("Mobile: " + mob);
+                    System.out.println("---------------------------");
+                }
+            } catch (EOFException e) {
+                // End of file reached — do nothing
+            }
+
+            dis.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

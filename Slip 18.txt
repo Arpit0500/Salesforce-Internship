@@ -1,0 +1,77 @@
+Q1
+import java.io.*;
+
+public class Main{
+    public static void main(String args[])throws Exception{
+
+        BufferedReader br=new BufferedReader(new FileReader("kartik.txt"));
+        int line=0,word=0,chars=0;
+        String s;
+
+        while((s=br.readLine())!=null) {
+            line++;
+            chars += s.length();
+
+            String arr[] = s.split("\\s+");
+            word += arr.length;
+        }
+            System.out.println("Lines"+line);
+            System.out.println("chars "+chars);
+            System.out.println("Words"+word);
+
+    }
+}
+--------------------------
+Q2.
+import java.util.*;
+class Employee{
+    String name;
+    
+    Employee(String name){
+        this.name=name;
+    }
+    
+    public String toString(){
+        return name;
+    }
+    
+    static void sort(Employee e[],int n){
+        for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(e[i].name.compareTo(e[j].name)>0){
+                Employee temp=e[i];
+                e[i]=e[j];
+                e[j]=temp;
+              }
+            }
+        }
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("How many Employee you want to enter");
+        int n=sc.nextInt();
+        
+        Employee e[]=new Employee[n];
+        
+        for(int i=0;i<n;i++){
+            System.out.println("enter name ");
+            String name=sc.next();
+            
+            e[i]=new Employee(name);
+        }
+        
+        Employee.sort(e,n);
+        
+        System.out.println("Display details ");
+        for(int i=0;i<n;i++){
+            System.out.print(e[i]+" ");
+        }
+        }
+        
+    }

@@ -1,0 +1,138 @@
+Q2.
+import java.util.*;
+
+abstract class Order{
+        int id;
+        String desc;
+         abstract void accept();
+         abstract void display();
+
+}
+
+class Sales extends Order{
+    String cname;
+
+    void accept(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter id");
+        id=sc.nextInt();
+        System.out.println("enter desc");
+        desc=sc.next();
+        System.out.println("enter customer name");
+        cname=sc.next();
+    }
+    void display(){
+        System.out.println("id: "+id);
+        System.out.println("desc: "+desc);
+        System.out.println("customer: "+cname);
+    }
+}
+public class Main{
+    public  static  void main(String args[]){
+       /* Sales s1=new Sales();
+        Sales s2=new Sales();
+        Sales s3=new Sales();
+        System.out.println("enter detail for sales 1");
+        s1.accept();
+
+        System.out.println("enter detail for sales 2");
+        s2.accept();
+
+        System.out.println("enter detail for sales 3");
+        s3.accept();
+
+        s1.display();
+        s2.display();
+        s3.display();*/
+
+        //OR
+
+     Sales s[]=new Sales[3];
+     for(int i=0;i<3;i++){
+         System.out.println("Enter details for sales  "+(i+1));
+         s[i]=new Sales();
+         s[i].accept();
+     }
+     System.out.println("Printing details");
+     for(int i=0;i<3;i++){
+         s[i].display();
+     }
+
+
+    }
+}
+
+------------------------------------------
+Q1.
+package Series;
+
+public class FibonacciSeries {
+    public void print(int n) {
+        int a = 0, b = 1;
+        System.out.println("Fibonacci Series:");
+        for(int i = 1; i <= n; i++) {
+            System.out.print(a + " ");
+            int c = a + b;
+            a = b;
+            b = c;
+        }
+        System.out.println();
+    }
+}
+
+package Series;
+
+public class CubeSeries {
+    public void print(int n) {
+        System.out.println("Cube Series:");
+        for(int i = 1; i <= n; i++) {
+            System.out.print((i*i*i) + " ");
+        }
+        System.out.println();
+    }package Series;
+
+public class SquareSeries {
+    public void print(int n) {
+        System.out.println("Square Series:");
+        for(int i = 1; i <= n; i++) {
+            System.out.print((i*i) + " ");
+        }
+        System.out.println();
+    }
+}
+}
+
+
+package Series;
+
+public class SquareSeries {
+    public void print(int n) {
+        System.out.println("Square Series:");
+        for(int i = 1; i <= n; i++) {
+            System.out.print((i*i) + " ");
+        }
+        System.out.println();
+    }
+}
+
+
+import java.util.*;
+import Series.*;
+
+class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+
+        FibonacciSeries f = new FibonacciSeries();
+        CubeSeries c = new CubeSeries();
+        SquareSeries s = new SquareSeries();
+
+        f.print(n);
+        c.print(n);
+        s.print(n);
+    }
+}
+
+

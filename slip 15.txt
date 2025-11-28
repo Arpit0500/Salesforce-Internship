@@ -1,0 +1,75 @@
+Q1. packagd
+
+package Area;
+public class Circle {
+    public double area(double r) {
+        return 3.14 * r * r;
+    }
+}
+package Area;
+public class Rectangle {
+    public double area(double l, double b) {
+        return l * b;
+    }
+}
+
+package Area;
+public class Triangle {
+    public double area(double b, double h) {
+        return 0.5 * b * h;
+    }
+}
+
+package Area;
+public class Square {
+    public double area(double s) {
+        return s * s;
+    }
+}
+--Main class--
+
+import Area.*;
+class Main {
+    public static void main(String[] args) {
+
+        Circle c = new Circle();
+        Rectangle r = new Rectangle();
+        Triangle t = new Triangle();
+        Square s = new Square();
+
+        System.out.println("Circle Area : " + c.area(5));
+        System.out.println("Rectangle Area : " + r.area(4, 6));
+        System.out.println("Triangle Area : " + t.area(3, 7));
+        System.out.println("Square Area : " + s.area(4));
+    }
+}
+
+-----------------------------------
+
+Q2.
+import java.util.*;
+class Shape{
+    double l,b;
+    void getArea(double l,double b){
+        
+    }
+}
+
+class Reactangle extends Shape{
+    void getArea(double l,double b){
+         System.out.print("Area of rectangle"+(l*b));
+    }
+    
+}
+class Main{
+    public static void main(String args[]){
+        Reactangle r=new Reactangle();
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter length and width");
+        double l=sc.nextDouble();
+      double b=sc.nextDouble();
+        
+        r.getArea(l,b);
+    }
+}

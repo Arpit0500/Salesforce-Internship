@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+class Main{
+    public static void main(String args[])throws Exception{
+        BufferedReader br=new BufferedReader(new FileReader("kartik.txt"));
+        int line=0,words=0,chars=0;
+        String s;
+        while((s=br.readLine())!=null){
+            line++;
+            chars+=s.length();
+
+            String arr[]=s.split("\\s+");
+            words+=arr.length;
+        }
+        System.out.println("Liness "+line);
+        System.out.println("Words"+words);
+        System.out.println("Chars "+chars);
+
+    }
+}
+
+-------------------------
+Q2.
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // TreeSet automatically sorts and prevents duplicates
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        System.out.print("Enter number of integers: ");
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter integer " + (i + 1) + ": ");
+            int num = sc.nextInt();
+            numbers.add(num); // duplicate automatically ignored
+        }
+
+        // Display sorted numbers
+        System.out.println("\nSorted Numbers (No Duplicates): " + numbers);
+
+        // Search for a number
+        System.out.print("\nEnter number to search: ");
+        int search = sc.nextInt();
+
+        if (numbers.contains(search)) {
+            System.out.println(search + " is present in the collection.");
+        } else {
+            System.out.println(search + " is not present in the collection.");
+        }
+    }
+}

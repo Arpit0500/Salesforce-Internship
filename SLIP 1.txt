@@ -1,0 +1,171 @@
+Q1.
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+class FactorialBufferedReader {
+    public static void main(String[] args) throws IOException {
+        
+        // Create BufferedReader object
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        // Accept number
+        System.out.print("Enter a number: ");
+        int num = Integer.parseInt(br.readLine());
+        
+        long fact = 1;
+
+        // Calculate factorial
+        for (int i = 1; i <= num; i++) {
+            fact = fact * i;
+        }
+
+        // Display result
+        System.out.println("Factorial of " + num + " is: " + fact);
+    }
+}
+
+
+class FactorialCommand {
+    public static void main(String[] args) {
+        
+        // Check if number is passed
+        if (args.length == 0) {
+            System.out.println("Please provide a number as command line argument.");
+            return;
+        }
+        
+        // Convert argument to integer
+        int num = Integer.parseInt(args[0]);
+        long fact = 1;
+
+        // Calculate factorial
+        for (int i = 1; i <= num; i++) {
+            fact = fact * i;
+        }
+
+        // Display result
+        System.out.println("Factorial of " + num + " is: " + fact);
+    }
+}
+-------------------------------------
+
+
+Q2.
+import java.util.Scanner;
+
+class Employee {
+    private int id;
+    private String name;
+    private String department;
+    private double salary;
+
+    // Default constructor
+    Employee() {
+        id = 0;
+        name = "";
+        department = "";
+        salary = 0.0;
+    }
+
+    // Parameterized constructor
+    Employee(int id, String name, String department, double salary) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+    }
+
+    // Accept method
+    public void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Name: ");
+        name = sc.next();
+        System.out.print("Enter Department: ");
+        department = sc.next();
+        System.out.print("Enter Salary: ");
+        salary = sc.nextDouble();
+    }
+
+    // Display method
+    public void display() {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Department: " + department);
+        System.out.println("Salary: " + salary);
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+}
+
+class Manager extends Employee {
+    private double bonus;
+
+    // Default constructor
+    Manager() {
+        super();
+        bonus = 0.0;
+    }
+
+    // Parameterized constructor
+    Manager(int id, String name, String dept, double salary, double bonus) {
+        super(id, name, dept, salary);
+        this.bonus = bonus;
+    }
+
+    // Accept method
+    public void accept() {
+        super.accept();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Bonus: ");
+        bonus = sc.nextDouble();
+    }
+
+    // Display method
+    public void display() {
+        super.display();
+        System.out.println("Bonus: " + bonus);
+        System.out.println("Total Salary: " + getTotalSalary());
+        System.out.println("----------------------------");
+    }
+
+    public double getTotalSalary() {
+        return getSalary() + bonus;
+    }
+}
+
+public class ManagerDemo {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of Managers: ");
+        int n = sc.nextInt();
+
+        Manager m[] = new Manager[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details of Manager " + (i + 1));
+            m[i] = new Manager();
+            m[i].accept();
+        }
+
+        // Find manager with maximum total salary
+        double max = m[0].getTotalSalary();
+        int index = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (m[i].getTotalSalary() > max) {
+                max = m[i].getTotalSalary();
+                index = i;
+            }
+        }
+
+        System.out.println("\nManager with Maximum Total Salary:");
+        m[index].display();
+    }
+}
+

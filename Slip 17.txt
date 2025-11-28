@@ -1,0 +1,96 @@
+import java.util.*;
+import java.io.*;
+
+class InvalidPan extends Exception{
+    InvalidPan(String msg){
+        super(msg);
+        }
+}
+
+class Main{
+    
+    static void checkPan(String pan)throws InvalidPan{
+        if(!pan.matches("[A-Z]{5}[0-9]{4}[A-Z]"))
+        {
+            throw new InvalidPan("Invalid Pan: Enter propper number ");
+        }
+    }
+    
+    static void checkMno(String mno)throws InvalidPan{
+        if(!mno.matches("[0-9]{10}")){
+            throw new InvalidPan("Wrong Mobile No Entered");
+        }
+    }
+        public static void main(String args[]){
+            Scanner sc=new Scanner(System.in);
+            try{
+            System.out.print("Eenter pan");
+            String pan=sc.next();
+            
+            System.out.print("Enter mobile no");
+            String mno=sc.next();
+            
+            checkPan(pan);
+            checkMno(mno);
+            
+            System.out.println("Validate details ");
+            System.out.print("Pan numnber "+pan);
+            System.out.print("Mobile number "+mno);
+            
+        }catch(InvalidPan e){ System.out.println(e); }
+  }
+}
+---------------------------
+Q2.
+import java.util.*;
+class Employee{
+    String name;
+    
+    Employee(String name){
+        this.name=name;
+    }
+    
+    public String toString(){
+        return name;
+    }
+    
+    static void sort(Employee e[],int n){
+        for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(e[i].name.compareTo(e[j].name)>0){
+                Employee temp=e[i];
+                e[i]=e[j];
+                e[j]=temp;
+              }
+            }
+        }
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("How many Employee you want to enter");
+        int n=sc.nextInt();
+        
+        Employee e[]=new Employee[n];
+        
+        for(int i=0;i<n;i++){
+            System.out.println("enter name ");
+            String name=sc.next();
+            
+            e[i]=new Employee(name);
+        }
+        
+        Employee.sort(e,n);
+        
+        System.out.println("Display details ");
+        for(int i=0;i<n;i++){
+            System.out.print(e[i]+" ");
+        }
+        }
+        
+    }

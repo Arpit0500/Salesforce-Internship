@@ -1,0 +1,120 @@
+Q2.
+Q2.
+import java.util.*;
+
+abstract class Order{
+        int id;
+        String desc;
+         abstract void accept();
+         abstract void display();
+
+}
+
+class Sales extends Order{
+    String cname;
+
+    void accept(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter id");
+        id=sc.nextInt();
+        System.out.println("enter desc");
+        desc=sc.next();
+        System.out.println("enter customer name");
+        cname=sc.next();
+    }
+    void display(){
+        System.out.println("id: "+id);
+        System.out.println("desc: "+desc);
+        System.out.println("customer: "+cname);
+    }
+}
+public class Main{
+    public  static  void main(String args[]){
+       /* Sales s1=new Sales();
+        Sales s2=new Sales();
+        Sales s3=new Sales();
+        System.out.println("enter detail for sales 1");
+        s1.accept();
+
+        System.out.println("enter detail for sales 2");
+        s2.accept();
+
+        System.out.println("enter detail for sales 3");
+        s3.accept();
+
+        s1.display();
+        s2.display();
+        s3.display();*/
+
+        //OR
+
+     Sales s[]=new Sales[3];
+     for(int i=0;i<3;i++){
+         System.out.println("Enter details for sales  "+(i+1));
+         s[i]=new Sales();
+         s[i].accept();
+     }
+     System.out.println("Printing details");
+     for(int i=0;i<3;i++){
+         s[i].display();
+     }
+
+
+    }
+}
+-------------------------------
+Q1
+import javax.swing.*;
+import java.awt.*;
+
+class EmailForm {
+    public static void main(String[] args) {
+
+        JFrame f = new JFrame("Email Registration Form");
+        f.setSize(400, 350);
+        f.setLayout(new GridLayout(8, 2, 5, 5));
+
+        // Swing Components
+        JLabel lblName = new JLabel("Full Name:");
+        JTextField txtName = new JTextField();
+
+        JLabel lblEmail = new JLabel("Email ID:");
+        JTextField txtEmail = new JTextField();
+
+        JLabel lblPass = new JLabel("Password:");
+        JPasswordField txtPass = new JPasswordField();
+
+        JLabel lblGender = new JLabel("Gender:");
+        JPanel genderPanel = new JPanel();
+        JRadioButton male = new JRadioButton("Male");
+        JRadioButton female = new JRadioButton("Female");
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(male);
+        bg.add(female);
+        genderPanel.add(male);
+        genderPanel.add(female);
+
+        JLabel lblCourse = new JLabel("Course:");
+        String course[] = {"BCA", "BSc", "MCA", "BTech"};
+        JComboBox<String> cmbCourse = new JComboBox<>(course);
+
+        JLabel lblAgree = new JLabel("Agree Terms:");
+        JCheckBox chk = new JCheckBox("Yes");
+
+        JButton btnSubmit = new JButton("Register");
+
+        // Adding all components
+        f.add(lblName);   f.add(txtName);
+        f.add(lblEmail);  f.add(txtEmail);
+        f.add(lblPass);   f.add(txtPass);
+        f.add(lblGender); f.add(genderPanel);
+        f.add(lblCourse); f.add(cmbCourse);
+        f.add(lblAgree);  f.add(chk);
+        f.add(new JLabel("")); 
+        f.add(btnSubmit);
+
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
+

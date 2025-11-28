@@ -1,0 +1,77 @@
+Q1.
+import java.util.*;
+import java.io.*;
+import java.*;
+
+class PositiveNumber extends Exception {
+    PositiveNumber(String msg) {
+        super(msg);
+    }
+}
+
+class POS {
+    public static void main(String args[]) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("example.txt"));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                int num = java.lang.Integer.parseInt(line);
+
+                if (num > 0) {
+                    throw new PositiveNumber(num + " Positive Number Found");
+                }
+            }
+
+            br.close();
+            System.out.println("No positive found");
+
+        } catch (PositiveNumber e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+        }
+    }
+}
+
+
+--------------------
+Q2
+// Interface
+interface Flyable {
+    void fly_obj();
+}
+
+// Class Spacecraft
+class Spacecraft implements Flyable {
+    public void fly_obj() {
+        System.out.println("Spacecraft is flying into space!");
+    }
+}
+
+// Class Airplane
+class Airplane implements Flyable {
+    public void fly_obj() {
+        System.out.println("Airplane is flying in the sky!");
+    }
+}
+
+// Class Helicopter
+class Helicopter implements Flyable {
+    public void fly_obj() {
+        System.out.println("Helicopter is hovering and flying!");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String args[]) {
+        Flyable f1 = new Spacecraft();
+        Flyable f2 = new Airplane();
+        Flyable f3 = new Helicopter();
+
+        f1.fly_obj();
+        f2.fly_obj();
+        f3.fly_obj();
+    }
+}

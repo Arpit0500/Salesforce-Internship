@@ -1,0 +1,77 @@
+Q1.
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        
+        Hashtable<String,Integer> emp=new Hashtable<>();
+        System.out.println("how many emp want");
+        int n=sc.nextInt();
+        
+        for(int i=0;i<n;i++){
+            System.out.println("enter name ");
+            String name=sc.next();
+            
+            System.out.print("Enter id ");
+            int id=sc.nextInt();
+            
+            emp.put(name,id);
+        }
+        
+        System.out.println("Display Hashtable");
+        for(String key: emp.keySet()){
+            System.out.println(key+" = "+emp.get(key));
+        }
+        
+        System.out.println("Enter name for search ");
+        String search=sc.next();
+        
+        if(emp.containsKey(search)){
+            System.out.println("Id of employee is "+emp.get(search));
+            }else{
+                System.out.println("not found employee");
+            }
+        }
+        
+       }
+--------------------------------------
+Q2
+import java.io.*;
+
+public class CopyFile {
+    public static void main(String args[]) {
+        try {
+            FileReader fr = new FileReader("source.txt");
+            FileWriter fw = new FileWriter("target.txt");
+
+            int ch;
+
+            while ((ch = fr.read()) != -1) {
+                char c = (char) ch;
+
+                // Replace digits with '*'
+                if (Character.isDigit(c)) {
+                    fw.write('*');
+                }
+                // Change case
+                else if (Character.isLowerCase(c)) {
+                    fw.write(Character.toUpperCase(c));
+                }
+                else if (Character.isUpperCase(c)) {
+                    fw.write(Character.toLowerCase(c));
+                }
+                // Other characters (space, punctuation, etc.)
+                else {
+                    fw.write(c);
+                }
+            }
+
+            fr.close();
+            fw.close();
+            System.out.println("File copied successfully!");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

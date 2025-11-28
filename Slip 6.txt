@@ -1,0 +1,49 @@
+Q1.
+import java.util.*;
+public class Hash {
+    public static void main(String args[]){
+
+        HashSet<String> hs=new HashSet<>();
+
+        hs.add("banana");
+        hs.add("apple");
+        hs.add("orange");
+        hs.add("mango");
+
+        System.out.println("Hashset "+hs);
+
+        TreeSet<String>  ts=new TreeSet<>(hs);
+        System.out.println("Treeset Sorted order: "+ts);
+
+    }
+}
+--------------------------------------------------------------------
+
+Q2 import java.util.*;
+
+class Shape{
+        void getArea(){
+           
+        }
+}
+class Rectangle extends Shape{
+    void getArea(int width,int breadth){
+        System.out.println("Area of rectangle"+(width*breadth));
+    }
+}
+
+
+public class Main {
+    public static void main(String args[]) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("enter width");
+        int w = sc.nextInt();
+        System.out.println("enter breadth");
+        int b = sc.nextInt();
+        
+        Rectangle r = new Rectangle();
+        r.getArea(w, b);
+    }
+}
+

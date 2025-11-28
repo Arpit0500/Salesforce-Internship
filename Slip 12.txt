@@ -1,0 +1,90 @@
+Q1.
+import java.util.*;
+
+class Employee{
+    int id;
+    String name;
+    int salary;
+    
+    
+    void accept(){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter name: ");
+         name=sc.next();
+        System.out.print("enter id ");
+        id=sc.nextInt();
+        System.out.print("enter slary ");
+        salary=sc.nextInt();
+        
+    }
+    
+    void display(){
+        System.out.println("Name : "+name+" id : "+id+" salary : "+salary);
+    }
+    public static void main(String args[]){
+    
+    Employee e[]=new Employee[5];
+    for(int i=0;i<5;i++){
+        System.out.println("enter detail for employee "+(i+1));
+        e[i]=new Employee();
+        e[i].accept();
+        
+    }
+    for(int i=0;i<5;i++)
+    e[i].display();
+    
+    }
+}
+
+--------------------
+Q2
+import java.util.*;
+import java.math.*;
+
+abstract class Shape{
+    abstract double area();
+    abstract double volume();
+}
+
+class Sphere extends Shape{
+    double r;
+    
+    Sphere(double r){
+        this.r=r;
+    }
+    double area(){
+        return 4*3.14*r*r;
+    }
+    double volume(){
+        return(4.0/3)*3.14*r*r*r;
+    }
+}
+
+class Cone extends Shape{
+    double r,h;
+    
+    Cone(double r,double h){
+        this.r=r;
+        this.h=h;
+    }
+    double area(){
+        double slant=Math.sqrt(r*r+h*h);
+        return 3.14*r*(r+slant);
+    }
+    
+    double volume(){
+        return (1.0/3) * 3.14 * r * r * h;
+    }
+    
+}
+class Main{
+    public static void main(String args[]){
+        Sphere s=new Sphere(5);
+        System.out.println("area of sphere: "+s.area());
+        System.out.println("volume of sphere: "+s.volume());
+    
+        Cone c=new Cone(5,7);
+        System.out.println("area of cone: "+c.area());
+        System.out.println("volume of sphere: "+c.volume());
+    }
+}

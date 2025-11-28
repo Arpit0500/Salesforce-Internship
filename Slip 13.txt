@@ -1,0 +1,143 @@
+Q1.
+
+import java.util.*;
+class Point{
+	int x,y;
+	
+	Point(){
+		x = 0;
+		y = 0;
+	}
+	Point(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+}
+
+class ColorPoint extends Point{
+	String color;
+	
+	ColorPoint(){
+		color = "Not Given";
+	}
+	
+	ColorPoint(int x, int y, String color){
+		super(x,y);
+		this.color = color;
+	}
+	
+	void display(){
+		System.out.println("Co-ordinates are : \nX : "+ x+"\nY : "+y);
+		System.out.println("Color is : "+ color);
+	}
+}
+
+public class Q1 {
+    public static void main(String[] args) {
+    		ColorPoint cp1 = new ColorPoint();
+    		cp1.display();
+    		ColorPoint cp2 = new ColorPoint(60,45,"Red");
+    		cp2.display();
+    }
+}
+---------------------------------
+Q2
+import java.util.*;
+
+abstract class Staff {
+    String name, address;
+
+    Staff(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    abstract void display();
+}
+
+// Full-time staff subclass
+class FullTimeStaff extends Staff {
+    String department;
+    double salary;
+
+    FullTimeStaff(String name, String address, String department, double salary) {
+        super(name, address);
+        this.department = department;
+        this.salary = salary;
+    }
+
+    void display() {
+        System.out.println("\nFull Time Staff Details");
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Department: " + department);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+// Part-time staff subclass
+class PartTimeStaff extends Staff {
+    int hrs;          // changed
+    double rate;      // changed
+
+    PartTimeStaff(String name, String address, int hrs, double rate) {
+        super(name, address);
+        this.hrs = hrs;
+        this.rate = rate;
+    }
+
+    void display() {
+        System.out.println("\nPart Time Staff Details");
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Hours: " + hrs);
+        System.out.println("Rate/Hour: " + rate);
+        System.out.println("Total Pay: " + (hrs * rate));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of staff: ");
+        int n = sc.nextInt();
+
+        Staff[] s = new Staff[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\n1. Full Time Staff");
+            System.out.println("2. Part Time Staff");
+            System.out.print("Enter your choice: ");
+            int ch = sc.nextInt();
+
+            System.out.print("Enter Name: ");
+            String name = sc.next();
+
+            System.out.print("Enter Address: ");
+            String address = sc.next();
+
+            if (ch == 1) {
+                System.out.print("Enter Department: ");
+                String dept = sc.next();
+
+                System.out.print("Enter Salary: ");
+                double sal = sc.nextDouble();
+
+                s[i] = new FullTimeStaff(name, address, dept, sal);
+            } else {
+                System.out.print("Enter Hours: ");
+                int hrs = sc.nextInt();
+
+                System.out.print("Enter Rate/hour: ");
+                double rate = sc.nextDouble();
+
+                s[i] = new PartTimeStaff(name, address, hrs, rate);
+            }
+        }
+
+        for (int i = 0; i < n; i++)
+            s[i].display();
+    }
+}

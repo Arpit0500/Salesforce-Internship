@@ -1,0 +1,105 @@
+Q1.
+import java.util.Scanner;
+
+class Teacher {
+    int id;
+    String name;
+    String designation;
+    double salary;
+
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter ID: ");
+        id = sc.nextInt();
+
+        System.out.print("Enter Name: ");
+        name = sc.next();
+
+        System.out.print("Enter Designation: ");
+        designation = sc.next();
+
+        System.out.print("Enter Salary: ");
+        salary = sc.nextDouble();
+    }
+
+    void display() {
+        System.out.println("\nTeacher Details:");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Designation: " + designation);
+        System.out.println("Salary: " + salary);
+    }
+
+    public static void main(String[] args) {
+        Teacher t = new Teacher();
+        t.accept();
+        t.display();
+    }
+}
+
+---------------------------------
+Q2.
+import java.io.*;
+import java.util.*;
+
+public class Dos {
+    public static void main(String args[]) {
+        int cid;
+        String cname, caddr;
+        long mno;
+
+        try {
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("How many data you want to enter");
+            int n = sc.nextInt();
+
+            // --- Writing into file ---
+            for (int i = 0; i < n; i++) {
+                System.out.println("Enter cid, name, address and mobile no");
+                cid = sc.nextInt();
+                cname = sc.next();
+                caddr = sc.next();
+                mno = sc.nextLong();
+
+                DataOutputStream dos = new DataOutputStream(new FileOutputStream("xyz.txt", true));
+                dos.writeInt(cid);
+                dos.writeUTF(cname);
+                dos.writeUTF(caddr);
+                dos.writeLong(mno);
+                dos.close();   // close after writing
+            }
+
+            System.out.println("\nData stored successfully!\n");
+
+            // --- Reading from file ---
+            DataInputStream dis = new DataInputStream(new FileInputStream("xyz.txt"));
+
+            System.out.println("Reading data from file:");
+            System.out.println("---------------------------");
+
+            try {
+                while (true) {
+                    int id = dis.readInt();
+                    String name = dis.readUTF();
+                    String addr = dis.readUTF();
+                    long mob = dis.readLong();
+
+                    System.out.println("CID: " + id);
+                    System.out.println("Name: " + name);
+                    System.out.println("Address: " + addr);
+                    System.out.println("Mobile: " + mob);
+                    System.out.println("---------------------------");
+                }
+            } catch (EOFException e) {
+                // End of file reached — do nothing
+            }
+
+            dis.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

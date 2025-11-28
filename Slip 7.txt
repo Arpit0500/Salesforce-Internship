@@ -1,0 +1,71 @@
+Q1.
+import java.util.*;
+import java.io.*;
+
+
+class OddException extends Exception{
+    public OddException(String Message){
+        super(Message);
+    }
+}
+
+
+class Odd{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("enter number");
+        int n=sc.nextInt();
+        
+        try{
+            if(n%2!=0){
+                throw new OddException("Enter Odd Number");
+            }
+            else{
+                System.out.print("even number");
+            }
+        }catch(OddException e){ System.out.print(e); }
+    } 
+    
+}
+
+-------------------------------------------------
+Q2
+
+import java.util.*;
+
+class Employee{
+    String name;
+    double salary;
+    
+    void work(){
+        System.out.print("Employee is working");
+    }
+    
+    void getSalary(){
+        System.out.println("salary of "+name+" is : "+salary);
+    }
+}
+
+class HRmanager extends Employee{
+    void work(){
+        System.out.println("Hr manager is working");
+        }
+        
+        void addEmployee(){
+            Scanner sc=new Scanner(System.in);
+            System.out.print("enter name");
+            name=sc.next();
+            System.out.print("Enter salary");
+            salary=sc.nextDouble();
+        }
+}
+
+public class Main{
+    public static void main(String args[]){
+        HRmanager hr=new HRmanager();
+        
+        hr.addEmployee();
+        hr.work();
+        hr.getSalary();
+    }
+}

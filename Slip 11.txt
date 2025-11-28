@@ -1,0 +1,92 @@
+Q1.
+import java.util.*;
+
+class Prime{
+    static boolean isPrime(int n){
+        if(n<=1) return false;
+        for(int i=2;i<=n/2;i++){
+            if(n%i==0) return false;
+        }
+        return true;
+    }  
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter limit");
+        int n=sc.nextInt();
+        
+        int arrorg[]=new int[n];
+        int prime[]=new int[n];
+        int index=0;
+        
+        for(int i=0;i<n;i++){
+            arrorg[i]=i+1;
+            
+            if(isPrime(arrorg[i])){
+                prime[index]=arrorg[i];
+                index++;
+            }
+        }    
+        System.out.println("Original Array");
+        for(int i=0;i<n;i++)
+        System.out.println(arrorg[i]+"");
+        
+        System.out.println("Prime number Stored in array");
+        for(int i=0;i<index;i++)
+        System.out.println(prime[i]+"");   
+    }
+} 
+-------------------------------------------
+Q2. Package program ,add,mu,sub,div
+
+package operation;
+public class Addition {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+
+package operation;
+public class Subtraction {
+    public int sub(int a, int b) {
+        return a - b;
+    }
+}
+
+package operation;
+public class Multiplication {
+    public int mul(int a, int b) {
+        return a * b;
+    }
+}
+
+package operation;
+public class Division {
+    public int div(int a, int b) {
+        return a / b;
+    }
+}
+
+
+
+import operation.*;
+import java.util.*;
+
+class MainClass {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter two numbers: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        Addition ad = new Addition();
+        Subtraction sb = new Subtraction();
+        Multiplication ml = new Multiplication();
+        Division dv = new Division();
+
+        System.out.println("Addition: " + ad.add(a, b));
+        System.out.println("Subtraction: " + sb.sub(a, b));
+        System.out.println("Multiplication: " + ml.mul(a, b));
+        System.out.println("Division: " + dv.div(a, b));
+    }
+}

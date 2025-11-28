@@ -1,0 +1,97 @@
+Q1.
+import java.util.*;
+interface IntegerCheck{
+    void check(int n);
+}
+
+class NumberCheck implements IntegerCheck{
+    public void  check(int n){
+        if(n>0)
+            System.out.print("Possitive");
+        else if(n<0)
+            System.out.print("Negative");
+            else
+            System.out.print("Zero number");
+            
+    }
+}
+class Main{
+    public static void main(String args[]){
+        
+    Scanner sc=new Scanner(System.in);
+    System.out.print("Enter number ");
+    int n=sc.nextInt();
+    
+    NumberCheck n1=new NumberCheck();
+    n1.check(n);
+}
+}
+------------------------
+Q2
+import java.util.*;
+
+abstract class Order {
+    int id;
+    String desc;
+
+    abstract void accept();
+    abstract void display();
+}
+
+class PurchaseOrder extends Order {
+    String customer;
+
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Purchase Order ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Description: ");
+        desc = sc.next();
+        System.out.print("Enter Customer Name: ");
+        customer = sc.next();
+    }
+
+    void display() {
+        System.out.println("\nPurchase Order");
+        System.out.println("ID: " + id + "  Description: " + desc);
+        System.out.println("Customer Name: " + customer);
+    }
+}
+
+class SalesOrder extends Order {
+    String vendor;
+
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Sales Order ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Description: ");
+        desc = sc.next();
+        System.out.print("Enter Vendor Name: ");
+        vendor = sc.next();
+    }
+
+    void display() {
+        System.out.println("\nSales Order");
+        System.out.println("ID: " + id + "  Description: " + desc);
+        System.out.println("Vendor Name: " + vendor);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        PurchaseOrder po[] = new PurchaseOrder[5];  // 5 Purchase Orders
+
+        for (int i = 0; i < 5; i++) {
+            po[i] = new PurchaseOrder();
+            System.out.println("\nEnter details for Purchase Order " + (i + 1));
+            po[i].accept();
+        }
+
+        System.out.println("\n--- Purchase Order Details ---");
+        for (int i = 0; i < 5; i++)
+            po[i].display();
+    }
+}
+

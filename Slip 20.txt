@@ -1,0 +1,119 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+class FactorialBufferedReader {
+    public static void main(String[] args) throws IOException {
+        
+        // Create BufferedReader object
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        // Accept number
+        System.out.print("Enter a number: ");
+        int num = Integer.parseInt(br.readLine());
+        
+        long fact = 1;
+
+        // Calculate factorial
+        for (int i = 1; i <= num; i++) {
+            fact = fact * i;
+        }
+
+        // Display result
+        System.out.println("Factorial of " + num + " is: " + fact);
+    }
+}
+
+
+class FactorialCommand {
+    public static void main(String[] args) {
+        
+        // Check if number is passed
+        if (args.length == 0) {
+            System.out.println("Please provide a number as command line argument.");
+            return;
+        }
+        
+        // Convert argument to integer
+        int num = Integer.parseInt(args[0]);
+        long fact = 1;
+
+        // Calculate factorial
+        for (int i = 1; i <= num; i++) {
+            fact = fact * i;
+        }
+
+        // Display result
+        System.out.println("Factorial of " + num + " is: " + fact);
+    }
+}
+--------
+Q2.
+import java.util.*;
+
+abstract class Order {
+    int id;
+    String desc;
+
+    abstract void accept();
+    abstract void display();
+}
+
+class PurchaseOrder extends Order {
+    String customer;
+
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Purchase Order ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Description: ");
+        desc = sc.next();
+        System.out.print("Enter Customer Name: ");
+        customer = sc.next();
+    }
+
+    void display() {
+        System.out.println("\nPurchase Order");
+        System.out.println("ID: " + id + "  Description: " + desc);
+        System.out.println("Customer Name: " + customer);
+    }
+}
+
+class SalesOrder extends Order {
+    String vendor;
+
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Sales Order ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Description: ");
+        desc = sc.next();
+        System.out.print("Enter Vendor Name: ");
+        vendor = sc.next();
+    }
+
+    void display() {
+        System.out.println("\nSales Order");
+        System.out.println("ID: " + id + "  Description: " + desc);
+        System.out.println("Vendor Name: " + vendor);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        PurchaseOrder po[] = new PurchaseOrder[5];  // 5 Purchase Orders
+
+        for (int i = 0; i < 5; i++) {
+            po[i] = new PurchaseOrder();
+            System.out.println("\nEnter details for Purchase Order " + (i + 1));
+            po[i].accept();
+        }
+
+        System.out.println("\n--- Purchase Order Details ---");
+        for (int i = 0; i < 5; i++)
+            po[i].display();
+    }
+}
+
